@@ -14,10 +14,16 @@ function Stack_Deck () {
     Deck = []
     for (let value of Suits) {
         for (let Face of DCHS) {
-            Deck.push("" + Face + value)
+            Draw = Chase.shift()
+            Deck.push("" + Face + Draw)
+            Chase.push(Draw)
         }
     }
     Discard = []
+    for (let index = 0; index < randint(1, 32); index++) {
+        Draw = Deck.shift()
+        Deck.push(Draw)
+    }
 }
 input.onButtonPressed(Button.AB, function () {
     Stack_Deck()
@@ -39,12 +45,33 @@ function CreateDeck () {
 }
 let Deck: string[] = []
 let Draw = ""
+let Chase: string[] = []
 let Discard: string[] = []
 let DCHS: string[] = []
 let Card: string[] = []
 let Suits: string[] = []
+for (let index = 0; index < 2; index++) {
+    basic.showIcon(IconNames.Target)
+    basic.showLeds(`
+        . # # . .
+        # # # # .
+        # # # # .
+        . # # . .
+        # # # # .
+        `)
+    basic.showIcon(IconNames.Heart)
+    basic.showIcon(IconNames.House)
+}
+basic.showLeds(`
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    `)
 Suits = ["D", "C", "H", "S"]
 Card = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 DCHS = ["A", "4", "7", "10", "K", "3", "6", "9", "Q", "2", "5", "8", "J"]
 CreateDeck()
 Discard = []
+Chase = Suits
