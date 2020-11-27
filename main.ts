@@ -4,6 +4,7 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("" + (Draw))
 })
 function Shuffle_Deck () {
+    Show_Shuffle()
     CreateDeck()
     for (let index = 0; index < 999; index++) {
         Draw = Deck.removeAt(randint(0, Deck.length - 1))
@@ -34,6 +35,45 @@ input.onButtonPressed(Button.B, function () {
 input.onGesture(Gesture.Shake, function () {
     Shuffle_Deck()
 })
+function Show_Shuffle () {
+    for (let index = 0; index < 2; index++) {
+        basic.showLeds(`
+            . . # # #
+            # # # . .
+            . . # # #
+            # # # . .
+            . . # # #
+            `)
+        basic.showLeds(`
+            . . # # #
+            . . # # #
+            # # # . .
+            # # # . .
+            # # # . .
+            `)
+        basic.showLeds(`
+            . . # # #
+            # # # . .
+            . . # # #
+            # # # . .
+            . . # # #
+            `)
+        basic.showLeds(`
+            . . # # #
+            . . # # #
+            # # # . .
+            # # # . .
+            # # # . .
+            `)
+    }
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+}
 function CreateDeck () {
     Deck = []
     for (let value of Suits) {
