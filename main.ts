@@ -35,6 +35,9 @@ input.onButtonPressed(Button.B, function () {
 input.onGesture(Gesture.Shake, function () {
     Shuffle_Deck()
 })
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    Stack_Deck()
+})
 function Show_Shuffle () {
     for (let index = 0; index < 2; index++) {
         basic.showLeds(`

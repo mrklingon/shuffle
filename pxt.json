@@ -1,5 +1,5 @@
 {
-    "name": "shuffle",
+    "name": "shufflev2",
     "description": "",
     "dependencies": {
         "core": "*",
